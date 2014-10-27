@@ -1,0 +1,26 @@
+{
+  "name": "iReader",
+  "description": "iReader platform sdk",
+  "version": "1.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "dudongcheng",
+    "email": "jncpp@qq.com"
+  },
+  "homepage": "https://git.oschina.net/jncpp/iReader.git",
+  "repository": {
+    "type": "git",
+    "url": "jncpp/iReader"
+  },
+  "dependencies": {
+    "log4js": "0.6.16",
+    "mysql": "2.4.0",
+    "ssh2": "0.3.6"
+  },
+  "engines": {
+    "node": ">= 0.8"
+  },
+  "scripts": {
+    "test": "node main.js"
+  }
+}
