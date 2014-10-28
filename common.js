@@ -1,8 +1,7 @@
-var CRYPTO = require("crypto");
+var QUERY_STRING = require("querystring");
 var HTTP = require("http");
 var HTTPS = require("https");
-var QUERY_STRING = require("querystring");
-var CONFIG = require("./config.js").Config;
+var URL = require('url');
 
 var ksort = function(obj){
     var keys = Object.keys(obj),
@@ -15,53 +14,43 @@ var ksort = function(obj){
     return ret;
 };
 
-var sign = function(private_key, obj){
-    var keys = Object.keys(obj),
-        i,
-        str = "",
-        ret = {},
-        length = keys.length;
-    // 字典排序，类似php的ksort
-    keys = keys.sort();
-    for(i = 0; i < length; ++i){
-        str += (keys[i] + "=" + obj[keys[i]]);
-        if(i != length - 1){
-            str += "&";
+/**
+ *
+ * @param {Object|String} opt
+ * @param {Function} cb
+ */
+exports.request = function(opt, cb){
+    var req_opt = {};
+    var req_param = {};
+    if((typeof opt === "string" || (typeof opt === "object" && opt.url)) && typeof cb === "function"){
+        if(typeof opt === "string"){
+            req_opt = URL.parse(opt);
+        }else{
+            req_param = opt.param;
+            if(opt.method === "GET" && typeof req_param === "object"){
+                opt.url = opt.url + "/?" + QUERY_STRING.stringify(req_param);
+            }
+            req_opt = URL.parse(opt.url);
+            var keys = Object.keys(opt);
+            var i = keys.length;
+            while (i--) {
+                if(keys[i] !== "url" && keys[i] !== "param")
+                    req_opt[keys[i]] = opt[keys[i]];
+            }
         }
-    }
-    // 创建
-    var sign = CRYPTO.createSign('RSA-SHA1');
-    sign.update(str);
-    return sign.sign(private_key, 'base64');
-};
-
-exports.token_check = function(opt, cb){
-    var param = {
-        app_id: Config.app_id,
-        open_uid: opt.open_uid,
-        access_token: opt.access_token,
-        timestamp: Date.now(),
-        sign_type: "RSA",
-        version: "1.0"
-    };
-    param.sign = sign(CONFIG.private_key, param);
-    var options = {
-        hostname:  'uc.zhangyue.com'
-    };
-    if(opt.is_post){
-        options.path = '/open/token/check';
-        options.mothod = 'POST';
     }else{
-        options.path = '/open/token/check/?' + QUERY_STRING.stringify(param);
+        throw new Error('Params error.');
     }
-    var req = HTTPS.request(options, function(res){
+    var times = 0;
+    var _http = req_opt.protocol === "https:" ? HTTPS : HTTP;
+    var req = _http.request(req_opt, function(res){
         res.setEncoding("utf8");
         var body = "";
         res.on("data", function(chunk) {
             body += chunk;
         });
         res.on("end", function(){
-            cb(null, body);
+            cb(null, body, Date.now() - times);
         });
         res.on("error", function(err){
             cb(err);
@@ -70,8 +59,26 @@ exports.token_check = function(opt, cb){
     req.on("error", function(err){
         cb(err);
     });
-    if(opt.is_post){
-        req.write(QUERY_STRING.stringify(param));
+    if(req_opt.method === "POST" && Object.keys(req_param).length > 0){
+        req.write(QUERY_STRING.stringify(req_param));
     }
     req.end();
+    times = Date.now();
 };
+
+//// 连接gameserver
+//self.socket = new SOCKET();
+//self.socket.setEncoding("binary");
+//self.socket.connect(CONFIG.game_server.port,CONFIG.game_server.host, function(){
+//    LOGGER.info("connect socket successed");
+//});
+//self.socket.on('data',function(data){
+//    LOGGER.trace('recv data:'+ data);
+//});
+//self.socket.on('error',function(err){
+//    LOGGER.error('gameserver socket error: '+ err);
+//    self.socket.destroy();
+//});
+//self.socket.on('close', function() {
+//    LOGGER.info('socket connection closed');
+//});

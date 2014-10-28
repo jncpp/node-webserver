@@ -1,6 +1,6 @@
 var UTIL = require("util");
-var CONFIG = require("./config.js").Config;
-var LOGGER = require("./config.js").Logger.Mysql;
+var CONFIG = require("./../config.js").Config;
+var LOGGER = require("./../config.js").Logger.Mysql;
 var MYSQL = require("mysql");   // api: https://github.com/felixge/node-mysql
 // 对mysql模块，node.js的版本不能低于0.8，否则可能出现connect ECONNREFUSED的错误
 

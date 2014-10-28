@@ -10,23 +10,7 @@ Config.database = {
     database: "node_web"
 };
 
-Config.app_id = '8906ef2a9167195a70e2';
 
-Config.private_key = '-----BEGIN RSA PRIVATE KEY-----' + "\n" +
-    'MIICXQIBAAKBgQDkfkbnCzeyuf1hh6RaVbPavoDLvomGgKYbnQruGqLmEy/Q7y8R' + "\n" +
-    'JsPRuK9ygZy0ohdeyqy6uE29Pveflcze75TWbBoYUx0oplrVjhJojtHaclpZFaa9' + "\n" +
-    'Fz5pQ/EjAwR5gYXnRPb4s6h7SUa4hUAieig5XEBsxE1ngShYAgEqUVlsKQIDAQAB' + "\n" +
-    'AoGACV5AC/MCypojkF8eVvHSmPJcl33tZ41YwiMTMqX27dX1jOxxkpNzTeLzlo9H' + "\n" +
-    '3IQUzzciE9nAnjS5tFpQ9wb9pCUcmSrdJWFX9PYDJJXMe7TqaYUZa1JPhirJR8Fe' + "\n" +
-    '5m0rlCKaNsNU9np6lf3ajuKZaCj7pKb/2Bu79ZAizFTADy0CQQD6DYbmXFfRN9W3' + "\n" +
-    'xUsrGgINLkx4olbAEiuCfeAhq1u1QmwX8IFrqa2vDXLKN0eRvKzuO51rcVI9/S1W' + "\n" +
-    'ME2MGTLnAkEA6e17d8Zp4/ee8mWjcehKlxWF8W9yd0tyCAFbluCE+PJHbNNE7L/Y' + "\n" +
-    'a+omiMXnFoEy1eK8nL4PxtSI4zsMQn+WbwJBAJ0uW5n6egk9u84k6rdRRfDbJZ6/' + "\n" +
-    'DSD3Svpf/b+sY51w/1mdCP2QT2k2Xu3WCdsGav3l43JibXwh5ZnECzsBrAkCQCZ4' + "\n" +
-    'keeez+dX3+IJaRngk/PI7GBKbc7Er5o1bvSfM/8lCS4SiLFO067bsT6pHVoMIWof' + "\n" +
-    'gdldQIb4iRKlsVx2Uy0CQQDH07nH6ajiQwvIKBNzMCrJMJSxiM53O2apBMyT+2dv' + "\n" +
-    'P82AEd75wZt0LjSl7cnsfURsPUybMBRg2/EayoET54+/' + "\n" +
-    '-----END RSA PRIVATE KEY-----';
 
 Config.game_server = {
     host: "192.168.1.90",
