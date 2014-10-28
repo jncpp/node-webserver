@@ -10,8 +10,6 @@ Config.database = {
     database: "node_web"
 };
 
-
-
 Config.game_server = {
     host: "192.168.1.90",
     port: 6900

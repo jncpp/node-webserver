@@ -1,10 +1,6 @@
 var CRYPTO = require("crypto");
 var LOGGER = require("./../config.js").Logger.Web;
-var QUERY_STRING = require("querystring");
-var HTTP = require("http");
-var HTTPS = require("https");
 var COMMON = require("./../common.js");
-var URL = require('url');
 
 var platform_config = {
     url:{
