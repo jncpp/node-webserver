@@ -24,12 +24,12 @@ Config.logConfig = {
         },
         {                                       // normal 记录器
             type: "file",                       // 日志文件类型，可以使用日期作为文件名的占位符
-            filename: "./log/log.log",
+            filename: "./logs/log.log",
             category: "normal"
         },
         {                                       // Web记录器
             type: "dateFile",                   // 日志文件类型，可以使用日期作为文件名的占位符
-            filename: "./log/",
+            filename: "./logs/",
             pattern: "web-yyyy-MM-dd.log",
             alwaysIncludePattern: true,
             category: "web"
