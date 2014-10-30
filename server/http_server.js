@@ -1,3 +1,5 @@
+'use strict';
+
 var HTTP = require("http");
 var HTTPS = require("https");
 var UTIL = require("util");
@@ -55,8 +57,8 @@ HttpServer.prototype.createServer = function(port)
  * @param {Object} arr
  * @example
  *  register([
- *      {name: "IREADER_LOGIN", path: "/", cb: function(){}},
- *      {name: "IREADER_LOGIN", path: "/login", cb: function(){}},
+ *      {name: "IREADER_LOGIN", path: "/", cb: function(request, response){}},
+ *      {name: "IREADER_LOGIN", path: "/login", cb: function(request, response){}},
  *  ]);
  */
 HttpServer.prototype.register = function(arr){

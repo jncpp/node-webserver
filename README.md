@@ -1,43 +1,43 @@
 node-webserver
 =========
 
-Ò»¸öÊ¹ÓÃ[node.js]Ğ´µÄweb·şÎñÆ÷£¬½«²»¶ÏÍêÉÆ
+ä¸€ä¸ªä½¿ç”¨[node.js]å†™çš„webæœåŠ¡å™¨ï¼Œå°†ä¸æ–­å®Œå–„
 
-Ê¹ÓÃÊ¾Àı:
+ä½¿ç”¨ç¤ºä¾‹:
 ---------
-* °²×°¶ÔÓ¦¿â£º
+* å®‰è£…å¯¹åº”åº“ï¼š
 ```sh
 npm install -d
 ```
-* ÔËĞĞ
+* è¿è¡Œ
 ```sh
 node main.js
 ```
 
-Ä¿Â¼½á¹¹½âÎö:
+ç›®å½•ç»“æ„è§£æ:
 ---------
 
 ##### platform
-* Õë¶Ô¸÷Æ½Ì¨µÄ½ÓÈë
+* é’ˆå¯¹å„å¹³å°çš„æ¥å…¥
 
-> * **ireader.js** ÕÆÔÄiReaderÆ½Ì¨½ÓÈë
+> * **ireader.js** æŒé˜…iReaderå¹³å°æ¥å…¥
 
 ##### server
-* ¸÷ÖÖ·şÎñÆ÷Çı¶¯
+* å„ç§æœåŠ¡å™¨é©±åŠ¨
 
-> * **http_server.js** http·şÎñÆ÷
-> * **http_mysql.js**  mysql·şÎñÆ÷
+> * **http_server.js** httpæœåŠ¡å™¨
+> * **http_mysql.js**  mysqlæœåŠ¡å™¨
 
 ##### common.js 
-* Ò»Ğ©¹¤¾ßº¯Êı
+* ä¸€äº›å·¥å…·å‡½æ•°
 
 ##### config.js
-* ÅäÖÃÎÄ¼ş
+* é…ç½®æ–‡ä»¶
 
 ##### main.js
-* ³ÌĞòÈë¿ÚÎÄ¼ş
+* ç¨‹åºå…¥å£æ–‡ä»¶
 
-×Ô¶¨ÒåÆ½Ì¨½ÓÈë
+è‡ªå®šä¹‰å¹³å°æ¥å…¥
 ---------
 
 ```js
@@ -47,14 +47,14 @@ var request_callback = [
         name: "IREADER_LOGIN",
         path: "/login",
         cb: function(req, resp){
-            // TODO: µÇÂ½²Ù×÷
+            // TODO: ç™»é™†æ“ä½œ
         }
     },
     {
         name: "IREADER_CHARGE",
         path: "/pay",
         cb: function(req, resp){
-            // TODO: ³äÖµ²Ù×÷
+            // TODO: å……å€¼æ“ä½œ
         }
     }
 ];

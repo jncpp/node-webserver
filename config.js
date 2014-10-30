@@ -1,13 +1,19 @@
+'use strict';
+
 var LOG4JS = require("log4js");
 
-Config = {};
+var Config = {};
 
 Config.database = {
-    host: "127.0.0.1",
-    port: 3306,
-    user: "root",
-    password: "0827",
-    database: "node_web"
+    logdb: {
+        //host: "192.168.1.90",
+        host: "192.168.1.71",
+        port: 3306,
+        user: "root",
+        //password: "0827",
+        password: "icedog",
+        database: "serverlog"
+    }
 };
 
 Config.game_server = {
@@ -24,6 +30,11 @@ Config.logConfig = {
             type: "file",                       // 日志文件类型，可以使用日期作为文件名的占位符
             filename: "./logs/log.log",
             category: "normal"
+        },
+        {                                       // mysql 记录器
+            type: "file",
+            filename: "./logs/mysql.log",
+            category: "mysql"
         },
         {                                       // Web记录器
             type: "dateFile",                   // 日志文件类型，可以使用日期作为文件名的占位符
@@ -43,5 +54,6 @@ LOG4JS.configure(Config.logConfig);
 exports.Config = Config;
 exports.Logger = {
     Normal: LOG4JS.getLogger("normal"),
+    Mysql: LOG4JS.getLogger("mysql"),
     Web: LOG4JS.getLogger("web")
 };

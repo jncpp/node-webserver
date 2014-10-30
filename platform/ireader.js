@@ -100,7 +100,7 @@ var login_check = function(request, response){
 var request_callback = [
     {
         name: "IREADER_LOGIN",
-        path: "/",
+        path: "/login",
         cb: login_check
     }
 ];
